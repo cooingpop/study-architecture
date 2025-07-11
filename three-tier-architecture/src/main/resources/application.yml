@@ -11,6 +11,23 @@ spring:
     console:
       enabled: true
       path: /h2-console
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:schema.sql
+
+# MyBatis Configuration
+mybatis:
+  mapper-locations: classpath:mappers/**/*.xml
+  type-aliases-package: com.example.threetier.domain
+  configuration:
+    map-underscore-to-camel-case: true
 
 server:
   port: 8080
+
+# Logging Configuration
+logging:
+  level:
+    root: INFO
+    com.example.threetier.config.xss: DEBUG

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.threetier.mapper.ConferenceMapper">
+
+    <resultMap id="conferenceResultMap" type="com.example.threetier.domain.Conference">
+        <id property="id" column="id" />
+        <result property="email" column="email" />
+        <result property="registrationDate" column="registration_date" />
+    </resultMap>
+
+    <insert id="save" parameterType="com.example.threetier.domain.Conference" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO conferences (email)
+        VALUES (#{email});
+
+        <selectKey resultType="com.example.threetier.domain.Conference" keyProperty="id,registrationDate" order="AFTER">
+            SELECT id, registration_date as registrationDate
+            FROM conferences
+            WHERE id = #{id}
+        </selectKey>
+    </insert>
+
+    <select id="findAll" resultMap="conferenceResultMap">
+        SELECT id, email, registration_date
+          FROM conferences
+    </select>
+
+    <select id="findByEmail" parameterType="string" resultMap="conferenceResultMap">
+        SELECT id, email, registration_date
+          FROM conferences
+         WHERE email = #{email}
+    </select>
+
+    <select id="existsByEmail" parameterType="string" resultType="boolean">
+        SELECT COUNT(*) > 0
+          FROM conferences
+         WHERE email = #{email}
+    </select>
+</mapper>

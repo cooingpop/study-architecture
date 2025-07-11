@@ -1,1 +1,6 @@
+
+
 rootProject.name = 'study-architecture'
+
+include 'three-tier-architecture'
+include 'four-tier-architecture'

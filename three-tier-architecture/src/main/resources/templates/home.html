@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>컨퍼런스 홈</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .container {
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        .empty-message {
+            padding: 20px;
+            background-color: #f8f8f8;
+            border-radius: 4px;
+            text-align: center;
+            color: #666;
+        }
+        .button {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 20px;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>컨퍼런스 관리</h1>
+
+        <a href="/register" class="button">새 참가자 등록</a>
+
+        <h2>등록된 참가자</h2>
+
+        <div th:if="${#lists.isEmpty(registrations)}" class="empty-message">
+            아직 등록된 참가자가 없습니다.
+        </div>
+
+        <table th:unless="${#lists.isEmpty(registrations)}">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>이메일</th>
+                    <th>등록 날짜</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="registration : ${registrations}">
+                    <td th:text="${registration.id}"></td>
+                    <td th:text="${registration.email}"></td>
+                    <td th:text="${registration.registrationDate}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

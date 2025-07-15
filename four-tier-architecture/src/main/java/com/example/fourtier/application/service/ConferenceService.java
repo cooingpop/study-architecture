@@ -1,13 +1,12 @@
-package com.example.threetier.service;
+package com.example.fourtier.application.service;
 
-import com.example.threetier.dto.ConferenceDto;
-import com.example.threetier.entity.ConferenceEntity;
-import com.example.threetier.repository.ConferenceRepository;
+import com.example.fourtier.application.dto.ConferenceDto;
+import com.example.fourtier.domain.Conference;
+import com.example.fourtier.infrastructure.repository.ConferenceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -31,11 +30,10 @@ public class ConferenceService {
             throw new IllegalArgumentException("Email already registered: " + email);
         }
 
-        ConferenceEntity entity = new ConferenceEntity(email);
-        entity.setRegistrationDate(LocalDateTime.now());
-        ConferenceEntity savedEntity = conferenceRepository.save(entity);
+        Conference conference = Conference.createConference(email);
+        Conference savedConference = conferenceRepository.save(conference);
 
-        return convertToDto(savedEntity);
+        return convertToDto(savedConference);
     }
 
     @Transactional(readOnly = true)
@@ -51,7 +49,11 @@ public class ConferenceService {
                 .map(this::convertToDto);
     }
 
-    private ConferenceDto convertToDto(ConferenceEntity entity) {
-        return new ConferenceDto(entity.getId(), entity.getEmail(), entity.getRegistrationDate());
+    private ConferenceDto convertToDto(Conference conference) {
+        return new ConferenceDto(
+                conference.getId(),
+                conference.getEmail(),
+                conference.getRegistrationDate()
+        );
     }
 }

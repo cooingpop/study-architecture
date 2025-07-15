@@ -1,8 +1,8 @@
-package com.example.threetier.controller;
+package com.example.fourtier.controller;
 
-import com.example.threetier.dto.ConferenceDto;
-import com.example.threetier.dto.ConferenceResponse;
-import com.example.threetier.service.ConferenceService;
+import com.example.fourtier.application.dto.ConferenceDto;
+import com.example.fourtier.application.service.ConferenceService;
+import com.example.fourtier.controller.dto.ConferenceResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

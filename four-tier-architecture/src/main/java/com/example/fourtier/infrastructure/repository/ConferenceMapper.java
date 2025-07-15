@@ -1,10 +1,9 @@
-package com.example.threetier.mapper;
+package com.example.fourtier.infrastructure.repository;
 
-import com.example.threetier.entity.ConferenceEntity;
+import com.example.fourtier.infrastructure.entity.ConferenceEntity;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
-import java.util.Optional;
 
 @Mapper
 public interface ConferenceMapper {

@@ -1,17 +1,17 @@
 package com.example.threetier.repository;
 
-import com.example.threetier.domain.Conference;
+import com.example.threetier.entity.ConferenceEntity;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface ConferenceRepository {
 
-    Conference save(Conference conference);
+    ConferenceEntity save(ConferenceEntity conferenceEntity);
 
-    List<Conference> findAll();
+    List<ConferenceEntity> findAll();
 
-    Optional<Conference> findByEmail(String email);
+    Optional<ConferenceEntity> findByEmail(String email);
 
     boolean existsByEmail(String email);
 }

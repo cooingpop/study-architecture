@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.threetier.mapper.ConferenceMapper">
+<mapper namespace="com.example.fourtier.infrastructure.repository.ConferenceMapper">
 
-    <resultMap id="conferenceResultMap" type="com.example.threetier.entity.ConferenceEntity">
+    <resultMap id="conferenceResultMap" type="com.example.fourtier.infrastructure.entity.ConferenceEntity">
         <id property="id" column="id" />
         <result property="email" column="email" />
         <result property="registrationDate" column="registration_date" />
     </resultMap>
 
-    <insert id="save" parameterType="com.example.threetier.entity.ConferenceEntity" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO conferences (email, registration_date)
-        VALUES (#{email}, #{registrationDate});
+    <insert id="save" parameterType="com.example.fourtier.infrastructure.entity.ConferenceEntity" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO conferences (email)
+        VALUES (#{email});
     </insert>
 
     <select id="findAll" resultMap="conferenceResultMap">

@@ -1,30 +1,29 @@
-package com.example.threetier.domain;
+package com.example.fourtier.application.dto;
 
 import java.time.LocalDateTime;
 
-public class Conference {
+public class ConferenceDto {
 
     private Long id;
-
     private String email;
-
     private LocalDateTime registrationDate;
 
-    public Conference() {
+    public ConferenceDto() {
     }
 
-    private Conference(String email) {
+    public ConferenceDto(String email) {
         this.email = email;
     }
 
-    /**
-     * Factory method to create a new Conference instance.
-     *
-     * @param email the email address for the conference participant
-     * @return a new Conference instance
-     */
-    public static Conference createConference(String email) {
-        return new Conference(email);
+    public ConferenceDto(Long id, String email) {
+        this.id = id;
+        this.email = email;
+    }
+
+    public ConferenceDto(Long id, String email, LocalDateTime registrationDate) {
+        this.id = id;
+        this.email = email;
+        this.registrationDate = registrationDate;
     }
 
     public Long getId() {
@@ -53,6 +52,6 @@ public class Conference {
 
     @Override
     public String toString() {
-        return "Conference{" + "id=" + id + ", email='" + email + '\'' + ", registrationDate=" + registrationDate + '}';
+        return "ConferenceDto{" + "id=" + id + ", email='" + email + '\'' + ", registrationDate=" + registrationDate + '}';
     }
 }

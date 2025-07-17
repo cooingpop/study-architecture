@@ -1,6 +1,4 @@
-package com.example.fourtier.infrastructure.entity;
-
-import com.example.fourtier.domain.Conference;
+package com.example.fourtier.infrastructure.persistence.entity;
 
 import java.time.LocalDateTime;
 
@@ -24,16 +22,8 @@ public class ConferenceEntity {
         this.registrationDate = registrationDate;
     }
 
-    public static ConferenceEntity create(Conference conference) {
-        return new ConferenceEntity(
-                conference.getId(),
-                conference.getEmail(),
-                LocalDateTime.now()
-        );
-    }
-
-    public Conference toDomain() {
-        return Conference.fromPersistence(id, email, registrationDate);
+    public static ConferenceEntity create(String email) {
+        return new ConferenceEntity(email);
     }
 
     public Long getId() {

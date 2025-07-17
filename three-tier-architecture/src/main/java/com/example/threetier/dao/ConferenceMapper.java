@@ -1,10 +1,9 @@
-package com.example.threetier.mapper;
+package com.example.threetier.dao;
 
 import com.example.threetier.entity.ConferenceEntity;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
-import java.util.Optional;
 
 @Mapper
 public interface ConferenceMapper {

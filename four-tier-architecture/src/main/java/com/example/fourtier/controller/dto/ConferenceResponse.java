@@ -1,6 +1,6 @@
 package com.example.fourtier.controller.dto;
 
-import com.example.fourtier.application.dto.ConferenceDto;
+import com.example.fourtier.application.conference.dto.ConferenceDto;
 
 import java.time.format.DateTimeFormatter;
 

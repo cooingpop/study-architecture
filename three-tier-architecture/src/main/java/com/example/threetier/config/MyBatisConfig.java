@@ -1,4 +1,4 @@
-package com.example.fourtier.config;
+package com.example.threetier.config;
 
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import javax.sql.DataSource;
 
 @Configuration
-@MapperScan(basePackages = {"com.example.fourtier.infrastructure.persistence"})
+@MapperScan(basePackages = {"com.example.threetier.dao"})
 @EnableTransactionManagement
 public class MyBatisConfig {
 
@@ -27,7 +27,7 @@ public class MyBatisConfig {
         SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
         factoryBean.setDataSource(dataSource);
         factoryBean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:mappers/**/*.xml"));
-        factoryBean.setTypeAliasesPackage("com.example.fourtier.infrastructure.persistence.entity");
+        factoryBean.setTypeAliasesPackage("com.example.threetier.entity");
 
         org.apache.ibatis.session.Configuration configuration = new org.apache.ibatis.session.Configuration();
         configuration.setMapUnderscoreToCamelCase(true);

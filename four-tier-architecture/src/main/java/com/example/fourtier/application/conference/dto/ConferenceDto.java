@@ -1,4 +1,4 @@
-package com.example.fourtier.application.dto;
+package com.example.fourtier.application.conference.dto;
 
 import java.time.LocalDateTime;
 

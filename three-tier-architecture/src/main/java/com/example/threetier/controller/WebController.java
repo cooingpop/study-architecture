@@ -1,7 +1,7 @@
 package com.example.threetier.controller;
 
-import com.example.threetier.dto.ConferenceDto;
-import com.example.threetier.dto.ConferenceResponse;
+import com.example.threetier.controller.dto.ConferenceDTO;
+import com.example.threetier.controller.dto.ConferenceResponseDTO;
 import com.example.threetier.service.ConferenceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,8 +33,8 @@ public class WebController {
 
     @GetMapping("/")
     public String home(Model model) {
-        List<ConferenceResponse> registrations = conferenceService.getAllRegistrations().stream()
-                .map(ConferenceResponse::fromDto)
+        List<ConferenceResponseDTO> registrations = conferenceService.getAllRegistrations().stream()
+                .map(ConferenceResponseDTO::fromDto)
                 .collect(Collectors.toList());
         model.addAttribute("registrations", registrations);
         return "home";
@@ -49,9 +49,9 @@ public class WebController {
                 return "redirect:/register";
             }
 
-            ConferenceDto registeredConference = conferenceService.registerParticipant(email);
+            ConferenceDTO registeredConference = conferenceService.registerParticipant(email);
             redirectAttributes.addFlashAttribute("success", "Registration successful!");
-            redirectAttributes.addFlashAttribute("conference", ConferenceResponse.fromDto(registeredConference));
+            redirectAttributes.addFlashAttribute("conference", ConferenceResponseDTO.fromDto(registeredConference));
             return "redirect:/register";
         } catch (IllegalArgumentException e) {
             redirectAttributes.addFlashAttribute("error", e.getMessage());

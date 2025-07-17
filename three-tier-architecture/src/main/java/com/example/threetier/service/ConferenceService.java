@@ -1,7 +1,7 @@
 package com.example.threetier.service;
 
-import com.example.threetier.dto.ConferenceDto;
-import com.example.threetier.entity.ConferenceEntity;
+import com.example.threetier.controller.dto.ConferenceDTO;
+import com.example.threetier.dao.entity.ConferenceEntity;
 import com.example.threetier.dao.ConferenceMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,7 +26,7 @@ public class ConferenceService {
     }
 
     @Transactional
-    public ConferenceDto registerParticipant(String email) {
+    public ConferenceDTO registerParticipant(String email) {
         if (conferenceMapper.existsByEmail(email)) {
             throw new IllegalArgumentException("Email already registered: " + email);
         }
@@ -39,20 +39,20 @@ public class ConferenceService {
     }
 
     @Transactional(readOnly = true)
-    public List<ConferenceDto> getAllRegistrations() {
+    public List<ConferenceDTO> getAllRegistrations() {
         return conferenceMapper.findAll().stream()
                 .map(this::convertToDto)
                 .collect(Collectors.toList());
     }
 
     @Transactional(readOnly = true)
-    public Optional<ConferenceDto> findByEmail(String email) {
+    public Optional<ConferenceDTO> findByEmail(String email) {
         ConferenceEntity entity = conferenceMapper.findByEmail(email);
         return Optional.ofNullable(entity)
                 .map(this::convertToDto);
     }
 
-    private ConferenceDto convertToDto(ConferenceEntity entity) {
-        return new ConferenceDto(entity.getId(), entity.getEmail(), entity.getRegistrationDate());
+    private ConferenceDTO convertToDto(ConferenceEntity entity) {
+        return new ConferenceDTO(entity.getId(), entity.getEmail(), entity.getRegistrationDate());
     }
 }

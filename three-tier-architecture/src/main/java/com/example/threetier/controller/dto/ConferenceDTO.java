@@ -1,26 +1,26 @@
-package com.example.threetier.dto;
+package com.example.threetier.controller.dto;
 
 import java.time.LocalDateTime;
 
-public class ConferenceDto {
+public class ConferenceDTO {
 
     private Long id;
     private String email;
     private LocalDateTime registrationDate;
 
-    public ConferenceDto() {
+    public ConferenceDTO() {
     }
 
-    public ConferenceDto(String email) {
+    public ConferenceDTO(String email) {
         this.email = email;
     }
 
-    public ConferenceDto(Long id, String email) {
+    public ConferenceDTO(Long id, String email) {
         this.id = id;
         this.email = email;
     }
 
-    public ConferenceDto(Long id, String email, LocalDateTime registrationDate) {
+    public ConferenceDTO(Long id, String email, LocalDateTime registrationDate) {
         this.id = id;
         this.email = email;
         this.registrationDate = registrationDate;

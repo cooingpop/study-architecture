@@ -2,7 +2,7 @@ package com.example.fourtier.controller;
 
 import com.example.fourtier.application.conference.dto.ConferenceDto;
 import com.example.fourtier.application.conference.service.ConferenceService;
-import com.example.fourtier.controller.dto.ConferenceResponse;
+import com.example.fourtier.controller.dto.ConferenceResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,8 +33,8 @@ public class WebController {
 
     @GetMapping("/")
     public String home(Model model) {
-        List<ConferenceResponse> registrations = conferenceService.getAllRegistrations().stream()
-                .map(ConferenceResponse::fromDto)
+        List<ConferenceResponseDTO> registrations = conferenceService.getAllRegistrations().stream()
+                .map(ConferenceResponseDTO::fromDto)
                 .collect(Collectors.toList());
         model.addAttribute("registrations", registrations);
         return "home";
@@ -51,7 +51,7 @@ public class WebController {
 
             ConferenceDto registeredConference = conferenceService.registerParticipant(email);
             redirectAttributes.addFlashAttribute("success", "Registration successful!");
-            redirectAttributes.addFlashAttribute("conference", ConferenceResponse.fromDto(registeredConference));
+            redirectAttributes.addFlashAttribute("conference", ConferenceResponseDTO.fromDto(registeredConference));
             return "redirect:/register";
         } catch (IllegalArgumentException e) {
             redirectAttributes.addFlashAttribute("error", e.getMessage());

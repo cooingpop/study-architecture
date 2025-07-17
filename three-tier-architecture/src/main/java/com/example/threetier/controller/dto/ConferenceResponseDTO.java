@@ -1,28 +1,27 @@
-package com.example.threetier.dto;
+package com.example.threetier.controller.dto;
 
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class ConferenceResponse {
+public class ConferenceResponseDTO {
 
     private Long id;
     private String email;
     private String registrationDate;
 
-    public ConferenceResponse() {
+    public ConferenceResponseDTO() {
     }
 
-    public ConferenceResponse(Long id, String email, String registrationDate) {
+    public ConferenceResponseDTO(Long id, String email, String registrationDate) {
         this.id = id;
         this.email = email;
         this.registrationDate = registrationDate;
     }
 
-    public static ConferenceResponse fromDto(ConferenceDto dto) {
+    public static ConferenceResponseDTO fromDto(ConferenceDTO dto) {
         String formattedDate = dto.getRegistrationDate() != null
                 ? dto.getRegistrationDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))
                 : null;
-        return new ConferenceResponse(dto.getId(), dto.getEmail(), formattedDate);
+        return new ConferenceResponseDTO(dto.getId(), dto.getEmail(), formattedDate);
     }
 
     public Long getId() {

@@ -14,8 +14,8 @@
    - 파일: 
    ```
    `com.example.fourtier.controller.WebController.java`, 
-   `com.example.fourtier.controller.dto.ConferenceResponse.java`, 
-   `com.example.fourtier.controller.dto.ConferenceRequest.java`
+   `com.example.fourtier.controller.dto.ConferenceResponseDTO.java`, 
+   `com.example.fourtier.controller.dto.ConferenceRequestDTO.java`
    ``` 
 
 2. **비즈니스 계층 (Business Layer)**
@@ -35,7 +35,7 @@
    - 실제 구현 방법은 정의하지 않고 필요한 기능만 명시합니다.
    - 파일: 
    ```
-   `com.example.fourtier.infrastructure.persistence.ConferenceMapper.java`
+   `com.example.fourtier.persistence.ConferenceMapper.java`
    ```
 
 4. **데이터베이스 계층 (Database Layer)**
@@ -45,7 +45,7 @@
    - 외부 시스템과의 통합
    - 파일: 
    ```
-   `com.example.fourtier.infrastructure.persistence.entity.ConferenceEntity.java`, 
+   `entity.com.example.fourtier.persistence.ConferenceEntity.java`, 
    `src/main/resources/mappers/ConferenceMapper.xml`
    ``` 
 

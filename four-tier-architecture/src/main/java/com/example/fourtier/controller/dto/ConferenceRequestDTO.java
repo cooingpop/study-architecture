@@ -1,13 +1,13 @@
 package com.example.fourtier.controller.dto;
 
-public class ConferenceRequest {
+public class ConferenceRequestDTO {
 
     private String email;
 
-    public ConferenceRequest() {
+    public ConferenceRequestDTO() {
     }
 
-    public ConferenceRequest(String email) {
+    public ConferenceRequestDTO(String email) {
         this.email = email;
     }
 

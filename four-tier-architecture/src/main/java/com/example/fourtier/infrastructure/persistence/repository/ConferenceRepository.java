@@ -1,12 +1,10 @@
-package com.example.threetier.dao;
+package com.example.fourtier.infrastructure.persistence.repository;
 
-import com.example.threetier.dao.entity.ConferenceEntity;
-import org.apache.ibatis.annotations.Mapper;
+import com.example.fourtier.infrastructure.persistence.entity.ConferenceEntity;
 
 import java.util.List;
 
-@Mapper
-public interface ConferenceMapper {
+public interface ConferenceRepository {
 
     int save(ConferenceEntity conferenceEntity);
 

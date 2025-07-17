@@ -16,12 +16,6 @@ spring:
       mode: always
       schema-locations: classpath:schema.sql
 
-# MyBatis Configuration
-mybatis:
-  mapper-locations: classpath:mappers/**/*.xml
-  type-aliases-package: com.example.fourtier.infrastructure.persistence.entity
-  configuration:
-    map-underscore-to-camel-case: true
 
 server:
   port: 8081

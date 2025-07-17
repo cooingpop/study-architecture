@@ -1,6 +1,6 @@
-package com.example.fourtier.infrastructure.repository;
+package com.example.fourtier.infrastructure.persistence;
 
-import com.example.fourtier.infrastructure.entity.ConferenceEntity;
+import com.example.fourtier.infrastructure.persistence.entity.ConferenceEntity;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

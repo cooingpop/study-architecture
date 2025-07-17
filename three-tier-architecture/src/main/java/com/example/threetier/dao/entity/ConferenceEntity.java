@@ -1,4 +1,4 @@
-package com.example.threetier.entity;
+package com.example.threetier.dao.entity;
 
 import java.time.LocalDateTime;
 
